@@ -1,2 +1,38 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
+<%= form_with model: @task do |f| %>
+  <h4>task</h4>
+  <%= f.text_field :body, class: 'form-control' %>
+
+  <h4>due</h4>
+  <%= f.datetime_field :due, class: 'form-control' %>
+
+  <h4>status</h4>
+  <%= f.select :status, [["0", "0"], ["25", "25"], ["50", "50"], ["75", "75"], ["100", "100"]], include_blank: "選択して下さい（％）" %>
+
+  <%= f.submit '保存' %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <td>task</td>
+      <td>due</td>
+      <td>status(%)</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.body %></td>
+        <td><%= task.due %></td>
+        <td><%= task.status %></td>
+        <td>
+          <%= link_to "編集", edit_task_path(task) %>
+        </td>
+        <td>
+          <%= link_to "削除", task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
