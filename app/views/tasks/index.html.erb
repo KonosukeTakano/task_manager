@@ -1,32 +1,35 @@
-<h4>Tasks</h4>
+<main>
+  <h4>Tasks</h4>
 
-<table>
-  <thead>
-    <tr>
-      <th>task</th>
-      <th>due</th>
-      <th>status(%)</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.order(created_at: :desc).each do |task| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= task.body %></td>
-        <td><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
-        <td><%= task.status %></td>
-        <td>
-          <%= link_to edit_task_path(task) do %>
-            <i class="fa-solid fa-pen"></i>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
-            <i class="fa-regular fa-trash-can"></i>
-          <% end %>
-        </td>
+        <th class="task_content">task</th>
+        <th class="task_content">due</th>
+        <th class="task_content">status(%)</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @tasks.order(created_at: :desc).each do |task| %>
+        <tr>
+          <td class="task_content"><%= task.body %></td>
+          <td class="task_content"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
+          <td class="task_content"><%= task.status %></td>
+          <td>
+            <%= link_to edit_task_path(task) do %>
+              <i class="fa-solid fa-pen"></i>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</main>
+

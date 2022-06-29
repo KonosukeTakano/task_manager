@@ -1,0 +1,21 @@
+.task_content{
+  text-align: center;
+}
+
+@media screen and (max-width: 450px){
+  th, td{
+    padding: 4px;
+  }
+  main {
+    margin: 0 10%;
+  }
+}
+
+@media screen and (min-width: 760px){
+  th, td{
+    padding: 10px;
+  }
+  main {
+    margin: 0 20%;
+  }
+}
