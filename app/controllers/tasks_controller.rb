@@ -4,7 +4,9 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
+    selection = params[:keyword]
+    @tasks = Task.sort(selection)
+    @all_task = Task.all
   end
 
   def create
@@ -27,9 +29,6 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.destroy
     redirect_to tasks_path
-  end
-
-  def search
   end
 
   private
