@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+
+  belongs_to :user
   validates :body, presence: true
 
   def self.sort(selection)
