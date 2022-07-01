@@ -1,2 +1,15 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<main class="mt-3">
+  <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
+    <div class="field box-name">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :image %>
+      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "d-block" %>
+    </div>
+    <div class="">
+      <%= f.submit 'Update User', class: "btn btn-secondary mt-3" %>
+    </div>
+  <% end %>
+</main>
