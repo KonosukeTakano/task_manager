@@ -1,0 +1,11 @@
+<% if user.profile_image.attached? %>
+  <%= image_tag user.get_profile_image(100,100), class: "d-block mx-auto my-2" %>
+<% else %>
+  <%= image_tag 'no_image', size: "100x100", class: "d-block mx-auto my-2" %>
+<% end %>
+
+<p class="text-center">name:<%= user.name %></p>
+
+<%= link_to edit_user_path(user.id), class: 'btn btn-outline-secondary btn-block', method: :get do %>
+  <i class="fas fa-user-cog"></i>
+<% end %>

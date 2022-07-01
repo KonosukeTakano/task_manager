@@ -2,12 +2,33 @@
   text-align: center;
 }
 
+.box-name input[type="text"], .box-email input[type="email"], .box-password input[type="password"] {
+  border-radius: 27px;
+}
+
 @media screen and (max-width: 450px){
   th, td{
     padding: 4px;
   }
   main {
     margin: 0 10%;
+  }
+  a.btn.btn-outline-secondary.btn-xs.btn-block {
+    width: 20%!important;
+    margin: auto!important;
+  }
+  #devise_heading{
+    margin-left: 25%;
+  }
+  .devise_form{
+    margin: 0 20% 0 25%;
+  }
+}
+
+@media screen and (min-width: 600px){
+  a.btn.btn-outline-secondary.btn-xs.btn-block {
+    width: 10%;
+    margin: auto;
   }
 }
 
@@ -17,5 +38,11 @@
   }
   main {
     margin: 0 20%;
+  }
+  #devise_heading{
+    margin-left: 40%;
+  }
+  .devise_form{
+    margin: 0 20% 0 40%;
   }
 }

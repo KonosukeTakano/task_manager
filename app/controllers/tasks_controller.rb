@@ -3,12 +3,6 @@ class TasksController < ApplicationController
     @task = Task.new
   end
 
-  def index
-    selection = params[:keyword]
-    @tasks = Task.sort(selection)
-    @all_task = Task.all
-  end
-
   def create
     task = Task.new(task_params)
     task.user_id = current_user.id
