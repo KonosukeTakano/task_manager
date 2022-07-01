@@ -23,6 +23,10 @@
   .devise_form{
     margin: 0 20% 0 25%;
   }
+  .devise_link{
+    display: block;
+    margin: 0 20% 0 25%;
+  }
 }
 
 @media screen and (min-width: 600px){
@@ -43,6 +47,10 @@
     margin-left: 40%;
   }
   .devise_form{
+    margin: 0 20% 0 40%;
+  }
+  .devise_link{
+    display: block;
     margin: 0 20% 0 40%;
   }
 }
