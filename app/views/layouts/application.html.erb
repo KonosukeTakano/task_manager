@@ -27,7 +27,7 @@
           <nav>
             <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse ml-auto">
             <% if user_signed_in? %>
-              <li><%= link_to "Tasks", user_path(current_user), class: "nav-link text-light" %></li>
+              <li><%= link_to "Tasks", users_path, class: "nav-link text-light" %></li>
               <li><%= link_to "New Task", new_task_path, class: "nav-link text-light" %></li>
               <li>
                 <%= link_to destroy_user_session_path, method: "delete", class: "nav-link text-light" do %>

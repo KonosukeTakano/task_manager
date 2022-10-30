@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+
   def new
     @task = Task.new
   end
@@ -7,7 +9,7 @@ class TasksController < ApplicationController
     task = Task.new(task_params)
     task.user_id = current_user.id
     task.save
-    redirect_to user_path(current_user)
+    redirect_to users_path
   end
 
   def edit
@@ -15,15 +17,15 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:id])
-    task.update(task_params)
-    redirect_to user_path(current_user)
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to users_path
   end
 
   def destroy
     task = Task.find(params[:id])
     task.destroy
-    redirect_to user_path(current_user)
+    redirect_to users_path
   end
 
   private
@@ -32,4 +34,8 @@ class TasksController < ApplicationController
     params.require(:task).permit(:body, :due, :status)
   end
 
+  def ensure_correct_user
+    task = Task.find(params[:id])
+    redirect_to users_path unless current_user == task.user
+  end
 end

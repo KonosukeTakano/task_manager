@@ -1,66 +1,74 @@
-<%= render partial: 'info', locals: { user: current_user } %>
+<div class="container mt-5">
+  <duv class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <%= render partial: 'info', locals: { user: current_user } %>
 
-<%= form_with url: user_path(current_user), class: "text-center my-3", method: :get do |f| %>
-  <%= f.select :keyword, [ ['提出期限が近い順', 'near'],
-                            ['進捗状況（降順）', 'desc'],
-                            ['進捗状況（昇順）', 'asc'],
-                          ]%>
-  <%= f.submit '並び替え', class: "btn btn-info" %>
-<% end %>
-
-<main>
-  <table class="mx-auto">
-    <thead>
-      <tr>
-        <th class="task_content">task</th>
-        <th class="task_content">due</th>
-        <th class="task_content">status(%)</th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% unless @tasks.nil? %>
-        <% @tasks.each do |task| %>
-          <% if task.user_id == current_user.id %>
-            <tr>
-              <td class="task_content"><%= task.body %></td>
-              <td class="task_content"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
-              <td class="task_content"><%= task.status %></td>
-              <td>
-                <%= link_to edit_task_path(task) do %>
-                  <i class="fa-solid fa-pen" style="color: #00008B;"></i>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
-                  <i class="fa-regular fa-trash-can" style="color: #AAAAAA;"></i>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-        <% end %>
-      <% else %>
-        <% @all_task.each do |task| %>
-          <% if task.user_id == current_user.id %>
-            <tr>
-              <td class="task_content"><%= task.body %></td>
-              <td class="task_content"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
-              <td class="task_content"><%= task.status %></td>
-              <td>
-                <%= link_to edit_task_path(task) do %>
-                  <i class="fa-solid fa-pen"></i>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
-                  <i class="fa-regular fa-trash-can"></i>
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
+      <%= form_with url: users_path, class: "text-center my-3", method: :get do |f| %>
+        <%= f.select :keyword, [ ['提出期限が近い順', 'near'],
+                                 ['進捗状況（降順）', 'desc'],
+                                 ['進捗状況（昇順）', 'asc'],
+        ]%>
+        <%= f.submit '並び替え', class: "btn btn-info" %>
       <% end %>
-    <% end %>
-    </tbody>
-  </table>
-</main>
+
+      <main>
+        <table class="mx-auto">
+          <thead>
+          <tr>
+            <th class="task_content">task</th>
+            <th class="task_content">due</th>
+            <th class="task_content">status(%)</th>
+            <th></th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% unless @tasks.nil? %>
+            <% @tasks.each do |task| %>
+              <% if task.user_id == current_user.id %>
+                <tr>
+                  <td class="task_content"><%= task.body %></td>
+                  <td class="task_content"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td class="task_content"><%= task.status %></td>
+                  <td>
+                    <%= link_to edit_task_path(task) do %>
+                      <i class="fa-solid fa-pen" style="color: #00008B;"></i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
+                      <i class="fa-regular fa-trash-can" style="color: #AAAAAA;"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% else %>
+            <% @all_task.each do |task| %>
+              <% if task.user_id == current_user.id %>
+                <tr>
+                  <td class="task_content"><%= task.body %></td>
+                  <td class="task_content"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
+                  <td class="task_content"><%= task.status %></td>
+                  <td>
+                    <%= link_to edit_task_path(task) do %>
+                      <i class="fa-solid fa-pen"></i>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
+                      <i class="fa-regular fa-trash-can"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <div class="col-md-2"></div>
+  </duv>
+</div>

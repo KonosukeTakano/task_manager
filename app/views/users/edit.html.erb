@@ -1,15 +1,22 @@
-<main class="mt-3">
-  <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
-    <div class="field box-name">
-      <%= f.label :name %><br>
-      <%= f.text_field :name %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <main>
+        <%= form_with model: @user, url: users_path, method: :patch do |f| %>
+          <div class="field box-name">
+            <%= f.label :name, class: "font-weight-bold d-block" %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="field">
+            <%= f.label :profile_image, "Image", class: "font-weight-bold d-block" %>
+            <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "d-block" %>
+          </div>
+
+          <%= f.submit 'Update User', class: "btn btn-secondary mt-3" %>
+        <% end %>
+      </main>
     </div>
-    <div class="field">
-      <%= f.label :image %>
-      <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "d-block" %>
-    </div>
-    <div class="">
-      <%= f.submit 'Update User', class: "btn btn-secondary mt-3" %>
-    </div>
-  <% end %>
-</main>
+    <div class="col-md-2"></div>
+  </div>
+</div>
