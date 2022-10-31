@@ -4,7 +4,22 @@
   <%= image_tag 'no_image', size: "100x100", class: "d-block mx-auto my-2" %>
 <% end %>
 
-<p class="text-center">name:<%= user.name %></p>
+<div class="row">
+  <div class="col"></div>
+  <div class="col">
+    <table class="table table-hover">
+      <tr>
+        <th>Name:</th>
+        <td><%= user.name %></td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td><%= user.email %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col"></div>
+</div>
 
 <%= link_to edit_users_path, class: 'btn btn-outline-secondary btn-block', method: :get do %>
   <i class="fas fa-user-cog"></i>

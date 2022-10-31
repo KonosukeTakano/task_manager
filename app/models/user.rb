@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :task
-  has_one_attached :profile_image
+  has_many :tasks, dependent: :destroy
+  has_one_attached :profile_image, dependent: :destroy
 
   def get_profile_image(width, height)
     unless profile_image.attached?

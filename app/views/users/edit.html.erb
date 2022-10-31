@@ -8,6 +8,12 @@
             <%= f.label :name, class: "font-weight-bold d-block" %>
             <%= f.text_field :name %>
           </div>
+
+          <div class="field box-name">
+            <%= f.label :email, class: "font-weight-bold d-block" %>
+            <%= f.text_field :email %>
+          </div>
+
           <div class="field">
             <%= f.label :profile_image, "Image", class: "font-weight-bold d-block" %>
             <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*", class: "d-block" %>
