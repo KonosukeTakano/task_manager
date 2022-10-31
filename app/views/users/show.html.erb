@@ -24,7 +24,7 @@
           </tr>
           </thead>
           <tbody>
-          <% unless @tasks.nil? %>
+
             <% @tasks.each do |task| %>
               <% if task.user_id == current_user.id %>
                 <tr>
@@ -44,27 +44,7 @@
                 </tr>
               <% end %>
             <% end %>
-          <% else %>
-            <% @all_task.each do |task| %>
-              <% if task.user_id == current_user.id %>
-                <tr>
-                  <td class="task_content"><%= task.body %></td>
-                  <td class="task_content"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
-                  <td class="task_content"><%= task.status %></td>
-                  <td>
-                    <%= link_to edit_task_path(task) do %>
-                      <i class="fa-solid fa-pen"></i>
-                    <% end %>
-                  </td>
-                  <td>
-                    <%= link_to task_path(task), method: :delete,"data-confirm" => "本当に削除しますか？"  do %>
-                      <i class="fa-regular fa-trash-can"></i>
-                    <% end %>
-                  </td>
-                </tr>
-              <% end %>
-            <% end %>
-          <% end %>
+
           </tbody>
         </table>
       </main>
