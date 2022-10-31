@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
   def show
     selection = params[:keyword]
-    @tasks = Task.sort(selection)
-    @all_task = Task.all
+    if selection.nil?
+      @tasks = Task.all
+    else
+      @tasks = Task.sort(selection)
+    end
   end
 
   def edit
