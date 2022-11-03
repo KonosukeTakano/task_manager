@@ -1,7 +1,9 @@
 class Task < ApplicationRecord
 
   belongs_to :user
-  validates :body, presence: true
+  validates :body, presence: true, length: { maximum: 30 }
+  validates :due, presence: true
+  validates :status, presence: true
 
   def self.sort(selection)
     case selection

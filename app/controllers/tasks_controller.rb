@@ -6,10 +6,13 @@ class TasksController < ApplicationController
   end
 
   def create
-    task = Task.new(task_params)
-    task.user_id = current_user.id
-    task.save
-    redirect_to users_path
+    @task = Task.new(task_params)
+    @task.user_id = current_user.id
+    if @task.save
+      redirect_to users_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -18,8 +21,11 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update(task_params)
-    redirect_to users_path
+    if @task.update(task_params)
+      redirect_to users_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -31,7 +37,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:body, :due, :status)
+    params.require(:task).permit(:body, :due, :status, :reminder_active)
   end
 
   def ensure_correct_user

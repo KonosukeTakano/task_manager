@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2022_06_30_112154) do
     t.datetime "due"
     t.integer "status", default: 0
     t.integer "user_id"
+    t.boolean "reminder_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
