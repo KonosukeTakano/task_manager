@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2022_06_30_112154) do
     t.string "body"
     t.datetime "due"
     t.integer "status", default: 0
-    t.integer "user_id"
     t.boolean "reminder_active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
