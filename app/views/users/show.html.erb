@@ -19,6 +19,7 @@
             <th class="task_content">task</th>
             <th class="task_content">due</th>
             <th class="task_content">status(%)</th>
+            <th class="task_content">reminder</th>
             <th></th>
             <th></th>
           </tr>
@@ -31,6 +32,13 @@
                   <td class="task_content"><%= task.body %></td>
                   <td class="task_content"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
                   <td class="task_content"><%= task.status %></td>
+                  <td class="task_content">
+                    <% if task.reminder_active %>
+                      ON
+                    <% else %>
+                      OFF
+                    <% end %>
+                  </td>
                   <td>
                     <%= link_to edit_task_path(task) do %>
                       <i class="fa-solid fa-pen" style="color: #00008B;"></i>
