@@ -1,8 +1,4 @@
-<% if user.profile_image.attached? %>
-  <%= image_tag user.get_profile_image(100,100), class: "d-block mx-auto my-2" %>
-<% else %>
-  <%= image_tag 'no_image', size: "100x100", class: "d-block mx-auto my-2" %>
-<% end %>
+<%= image_tag user.get_profile_image(100,100), class: "d-block mx-auto my-2" %>
 
 <div class="row">
   <div class="col"></div>
