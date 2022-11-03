@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_one_attached :profile_image, dependent: :destroy
 
+  validates :name, length: { minimum: 1, maximum: 20}
+
   def get_profile_image(width, height)
     unless profile_image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')

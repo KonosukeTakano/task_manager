@@ -3,7 +3,7 @@
 <h2 id="devise_heading">Sign up</h2>
 
 <%= form_with model: @user, url: user_registration_path, class: "devise_form" do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render 'layouts/error_messages', model: f.object %>
 
   <div class="field box-name">
     <%= f.label :name %><br>
