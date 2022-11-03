@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :body
       t.datetime :due
       t.integer :status, default: 0
-      t.references :user, foreign_key: true
+      t.integer :user_id
       t.boolean :reminder_active
       t.timestamps
     end
