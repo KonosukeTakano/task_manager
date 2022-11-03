@@ -7,6 +7,7 @@ class SampleMailer < ApplicationMailer
   #
   def send_before_deadline(user)
     @user = user
+    @tasks = @user.tasks
 
     mail to: user.email,
          subject: '【タスクの期限をお知らせします。】'

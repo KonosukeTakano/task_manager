@@ -27,26 +27,40 @@
           <nav>
             <ul id="navbar" class="nav navbar-nav navbar-right navbar-collapse collapse ml-auto">
             <% if user_signed_in? %>
-              <li><%= link_to "Tasks", users_path, class: "nav-link text-light" %></li>
-              <li><%= link_to "New Task", new_task_path, class: "nav-link text-light" %></li>
+              <li>
+                <%= link_to users_path, class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-list-check"></i>
+                  tasks
+                <% end %>
+              </li>
+              <li>
+                <%= link_to new_task_path, class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-square-plus"></i>
+                  New Task
+                <% end %>
+              </li>
               <li>
                 <%= link_to destroy_user_session_path, method: "delete", class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-right-from-bracket"></i>
                   Log out
                 <% end %>
               </li>
             <% else %>
               <li>
                 <%= link_to root_path, class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-house"></i>
                   Home
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_registration_path, class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-user-plus"></i>
                   Sign up
                 <% end %>
               </li>
               <li>
                 <%= link_to new_user_session_path, class: "nav-link text-light" do %>
+                  <i class="fa-solid fa-arrow-right-to-bracket"></i>
                   Log in
                 <% end %>
               </li>
