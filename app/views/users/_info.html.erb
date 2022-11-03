@@ -21,6 +21,8 @@
   <div class="col"></div>
 </div>
 
-<%= link_to edit_users_path, class: 'btn btn-outline-secondary btn-block', method: :get do %>
-  <i class="fas fa-user-cog"></i>
+<% if user.name != "guestuser" %>
+  <%= link_to edit_users_path, class: 'btn btn-outline-secondary btn-block', method: :get do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
 <% end %>
