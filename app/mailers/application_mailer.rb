@@ -1,5 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: '	task.manager.kmo@gmail.com',
-  reply_to: "	task.manager.kmo@gmail.com"
+  default from:ENV['SENDER_ADDRESS'],
+  reply_to: ENV['SENDER_ADDRESS']
   layout 'mailer'
 end
