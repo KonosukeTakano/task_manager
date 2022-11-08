@@ -23,7 +23,7 @@ require File.expand_path(File.dirname(__FILE__) + "/environment")
 rails_env = Rails.env.to_sym
 set :environment, rails_env
 set :output, "log/cron.log" # ログをアウトプットする
-every 1.day, at:['9:00 am', '1:00 pm', '3:00 pm', '6:00 pm'] do
+every 1.day, at:['9:00 am', '0:00 pm', '3:00 pm', '8:00 pm'] do
   begin
     runner "Batch::RemindTask.remind_task" # この処理を実行する
   rescue => e

@@ -28,7 +28,8 @@
   </thead>
   <tbody>
   <% @tasks.each do |task| %>
-    <% if (task.due - Time.now.in_time_zone("Tokyo")) / 3600 <= 24 %>
+    <% time_difference = (task.due - Time.now.in_time_zone("Tokyo")) / 3600 %>
+    <% if task.reminder_active == true && time_difference <= 24 && time_difference >= 0 %>
         <tr>
           <td class="p-5 text-center"><%= task.body %></td>
           <td class="p-5 text-center"><%= task.due.strftime("%Y-%m-%d %H:%M") %></td>
